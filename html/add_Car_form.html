@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Car</title>
+</head>
+<body>
+
+    <h2>Add a New Car</h2>
+
+    <form action="http://localhost/car-leasing-system/php/add_cars.php" method="POST">
+        <label for="car_name">Car Name:</label>
+        <input type="text" id="car_name" name="car_name" required><br><br>
+
+        <label for="brand">Brand:</label>
+        <input type="text" id="brand" name="brand" required><br><br>
+
+        <label for="model_year">Model Year:</label>
+        <input type="number" id="model_year" name="model_year" required><br><br>
+
+        <label for="price_per_day">Price Per Day:</label>
+        <input type="number" id="price_per_day" name="price_per_day" step="0.01" required><br><br>
+
+        <label for="availability">Availability:</label>
+        <select id="availability" name="availability" required>
+            <option value="1">Available</option>
+            <option value="0">Not Available</option>
+        </select><br><br>
+
+        <button type="submit">Add Car</button>
+    </form>
+
+</body>
+</html>

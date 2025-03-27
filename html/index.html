@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Leasing System</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+</head>
+<body>
+    <!-- Hero Section with Car Video -->
+    <header class="hero">
+      <video width="100%" height="auto" autoplay loop muted playsinline>
+    <source src="car_video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+        <div class="hero-text" data-aos="fade-up">
+            <h1>Find Your Perfect Lease</h1>
+            <p>Best Deals on the Latest Cars</p>
+            <a href="#cars" class="btn">Explore Cars</a>
+        </div>
+    </header>
+    
+    <!-- Car Filters -->
+    <section id="filters" data-aos="fade-right">
+        <select id="brandFilter">
+            <option value="all">All Brands</option>
+            <option value="Toyota">Toyota</option>
+            <option value="Honda">Honda</option>
+            <option value="Ford">Ford</option>
+        </select>
+        <select id="priceFilter">
+            <option value="all">All Prices</option>
+            <option value="low">Below $300</option>
+            <option value="medium">$300 - $600</option>
+            <option value="high">Above $600</option>
+        </select>
+        <button onclick="filterCars()">Apply Filters</button>
+    </section>
+    
+    <!-- Car Listings -->
+    <section id="cars" data-aos="fade-left">
+        <div class="car" data-brand="Toyota" data-price="medium">
+            <img src="../images/toyota.jpg" alt="Toyota">
+            <h3>Toyota Camry</h3>
+            <p>$450/month</p>
+        </div>
+        <div class="car" data-brand="Honda" data-price="low">
+            <img src="../images/honda.jpg" alt="Honda">
+            <h3>Honda Civic</h3>
+            <p>$250/month</p>
+        </div>
+        <div class="car" data-brand="Ford" data-price="high">
+            <img src="../images/ford.jpg" alt="Ford">
+            <h3>Ford Mustang</h3>
+            <p>$700/month</p>
+        </div>
+    </section>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init();
+        
+        function filterCars() {
+            let brand = document.getElementById('brandFilter').value;
+            let price = document.getElementById('priceFilter').value;
+            let cars = document.querySelectorAll('.car');
+            
+            cars.forEach(car => {
+                let carBrand = car.getAttribute('data-brand');
+                let carPrice = car.getAttribute('data-price');
+                
+                let brandMatch = brand === 'all' || carBrand === brand;
+                let priceMatch = price === 'all' || carPrice === price;
+                
+                if (brandMatch && priceMatch) {
+                    car.style.display = 'block';
+                } else {
+                    car.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
